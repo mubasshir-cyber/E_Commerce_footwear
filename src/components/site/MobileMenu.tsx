@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Search, X, Menu } from "lucide-react";
 import { useCart } from "../../lib/cart";
 import { useEffect } from "react";

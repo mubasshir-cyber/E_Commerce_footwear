@@ -3,7 +3,6 @@ import { Header } from "../../components/site/Header";
 import { Footer } from "../../components/site/Footer";
 import { AnnouncementBar } from "../../components/site/AnnouncementBar";
 import craft from "../../assets/craft-story.jpg";
-import editorial1 from "../../assets/editorial-1.jpg";
 import editorial2 from "../../assets/editorial-2.jpg";
 
 
