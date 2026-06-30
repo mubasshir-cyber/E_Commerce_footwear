@@ -5,6 +5,7 @@ import { AnnouncementBar } from "../../components/site/AnnouncementBar";
 import { ProductCard } from "../../components/site/ProductCard";
 import { ARButton } from "../../components/site/ARViewer";
 import { findProduct, products } from "../../data/products";
+import Product3D from "../../components/site/Product3D";
 import { useCart } from "../../lib/cart";
 import {
   ChevronRight,
@@ -36,6 +37,7 @@ export default function ProductPage() {
   const [activeImg, setActiveImg] = useState(0);
   const wished = wishlist.includes(p.id);
   const gallery = p.gallery ?? [p.image];
+  const [viewer, setViewer] = useState<"images" | "3d">("images");
 
   const handleAdd = () => {
     if (!size) {
@@ -83,14 +85,45 @@ export default function ProductPage() {
 
         <section className="container-luxe pt-6 md:pt-10 pb-16 md:pb-24">
           <div className="grid lg:grid-cols-[1.15fr_1fr] gap-8 lg:gap-14">
+            {/* <div className="mb-4 flex gap-3">
+              <button
+                onClick={() => setViewer("images")}
+                className={`px-4 py-2 border ${
+                  viewer === "images"
+                    ? "bg-black text-white"
+                    : "bg-white text-black"
+                }`}
+              >
+                Images
+              </button>
+
+              {p.glbModelUrl && (
+                <button
+                  onClick={() => setViewer("3d")}
+                  className={`px-4 py-2 border ${
+                    viewer === "3d"
+                      ? "bg-black text-white"
+                      : "bg-white text-black"
+                  }`}
+                >
+                  3D View
+                </button>
+              )}
+            </div> */}
+
             {/* Gallery */}
             <div>
               <div className="aspect-[4/5] bg-surface overflow-hidden relative">
-                <img
-                  src={gallery[activeImg]}
-                  alt={p.name}
-                  className="h-full w-full object-cover"
-                />
+                {viewer === "images" ? (
+                  <img
+                    src={gallery[activeImg]}
+                    alt={p.name}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <Product3D model={p.glbModelUrl!} iosModel={p.usdzModelUrl} />
+                )}
+
                 {p.badge && (
                   <span className="absolute top-4 left-4 bg-background/95 px-3 py-1.5 text-[10px] tracking-[0.2em] uppercase font-medium">
                     {p.badge}
@@ -233,7 +266,7 @@ export default function ProductPage() {
               </div>
 
               {/* AR */}
-              {p.hasAR && (
+              {p.hasAR && p.glbModelUrl && (
                 <div className="mt-4">
                   <ARButton
                     glbUrl={p.glbModelUrl}
