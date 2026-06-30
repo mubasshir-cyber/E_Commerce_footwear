@@ -31,7 +31,7 @@ export interface Product {
 }
 
 // const SHOE_GLB = "https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/MaterialsVariantsShoe/glTF-Binary/MaterialsVariantsShoe.glb";
-const SHOE_GLB = "/public/models/chappal.glb";
+const SHOE_GLB = "/models/chappal.glb";
 const SHOE_USDZ = "https://modelviewer.dev/shared-assets/models/MaterialsVariantsShoe.usdz";
 
 const baseSizes = [35, 36, 37, 38, 39, 40, 41];
