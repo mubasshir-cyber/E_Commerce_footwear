@@ -37,7 +37,7 @@ export default function ProductPage() {
   const [activeImg, setActiveImg] = useState(0);
   const wished = wishlist.includes(p.id);
   const gallery = p.gallery ?? [p.image];
-  const [viewer, setViewer] = useState<"images" | "3d">("images");
+  const [viewer] = useState<"images" | "3d">("images");
 
   const handleAdd = () => {
     if (!size) {

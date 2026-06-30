@@ -1,46 +1,40 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Box, Maximize2, X, Loader2 } from "lucide-react";
+import "@google/model-viewer";
 
 // model-viewer is loaded globally via <script> in __root.tsx
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    interface IntrinsicElements {
-      "model-viewer": ModelViewerAttrs;
-    }
-  }
-}
-interface ModelViewerAttrs extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-  src?: string;
-  "ios-src"?: string;
-  alt?: string;
-  ar?: boolean | "";
-  "ar-modes"?: string;
-  "ar-scale"?: string;
-  "ar-placement"?: string;
-  "camera-controls"?: boolean | "";
-  "touch-action"?: string;
-  "shadow-intensity"?: string;
-  "shadow-softness"?: string;
-  "environment-image"?: string;
-  "skybox-image"?: string;
-  exposure?: string;
-  "tone-mapping"?: string;
-  "auto-rotate"?: boolean | "";
-  "auto-rotate-delay"?: string;
-  "rotation-per-second"?: string;
-  "camera-orbit"?: string;
-  "min-camera-orbit"?: string;
-  "max-camera-orbit"?: string;
-  "field-of-view"?: string;
-  "interaction-prompt"?: string;
-  poster?: string;
-  loading?: "auto" | "lazy" | "eager";
-  reveal?: "auto" | "interaction";
-  scale?: string;
-  style?: CSSProperties;
-  ref?: React.Ref<HTMLElement>;
-}
+
+// interface ModelViewerAttrs extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+//   src?: string;
+//   "ios-src"?: string;
+//   alt?: string;
+//   ar?: boolean | "";
+//   "ar-modes"?: string;
+//   "ar-scale"?: string;
+//   "ar-placement"?: string;
+//   "camera-controls"?: boolean | "";
+//   "touch-action"?: string;
+//   "shadow-intensity"?: string;
+//   "shadow-softness"?: string;
+//   "environment-image"?: string;
+//   "skybox-image"?: string;
+//   exposure?: string;
+//   "tone-mapping"?: string;
+//   "auto-rotate"?: boolean | "";
+//   "auto-rotate-delay"?: string;
+//   "rotation-per-second"?: string;
+//   "camera-orbit"?: string;
+//   "min-camera-orbit"?: string;
+//   "max-camera-orbit"?: string;
+//   "field-of-view"?: string;
+//   "interaction-prompt"?: string;
+//   poster?: string;
+//   loading?: "auto" | "lazy" | "eager";
+//   reveal?: "auto" | "interaction";
+//   scale?: string;
+//   style?: CSSProperties;
+//   ref?: React.Ref<HTMLElement>;
+// }
 
 export interface ARButtonProps {
   glbUrl?: string;
@@ -179,7 +173,7 @@ function ARModal({ glbUrl, usdzUrl, productName, poster, modelScale, onClose, on
             </div>
           </div>
         )}
-        {/* @ts-expect-error model-viewer is a web component */}
+        
         <model-viewer
           ref={ref}
           src={glbUrl}
