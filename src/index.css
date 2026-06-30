@@ -1,0 +1,29 @@
+/* :root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+
+  --background: #020617;
+  --surface: #0f172a;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  --border: #1e293b;
+
+  --radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+} */
